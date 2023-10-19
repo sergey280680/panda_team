@@ -1,0 +1,17 @@
+.msg {
+    border-radius: 3px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.success {
+    border: 2px solid green;
+    color: green;
+}
+
+.error {
+    border: 2px solid red;
+    color: red;
+}
