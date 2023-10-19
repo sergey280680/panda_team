@@ -3,9 +3,9 @@ session_start();
 if (!$_SESSION['user']) {
     header('Location: index.php');
 }
+include 'head.php';
 ?>
 
-<?php include 'head.php'; ?>
 <body>
 <?php include 'nav_header.php'; ?>
 
