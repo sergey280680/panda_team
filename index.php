@@ -4,6 +4,10 @@
         header('Location: profile.php');
     }
 include 'head.php';
+//echo '<pre>';
+//print_r($_SESSION);
+//echo '</pre>';
+//die();
 ?>
 
 <body>
@@ -26,11 +30,10 @@ include 'head.php';
                         <button type="submit" class="btn btn-primary">Sign in</button>
                     </div>
                     <?php
+                    echo '<div class="form-group">' . '<p>No account <a href="/register.php">Sign up!</a></p>' . '</div>';
                     if ($_SESSION['message']) {
                         $class = ($_SESSION['message_type'] == 'error') ? 'msg error' : 'msg success';
                         echo '<div class="' . $class . '">' . $_SESSION['message'] . '</div>';
-                    }else {
-                        echo '<div class="form-group">' . '<p>No account <a href="/register.php">Sign up!</a></p>' . '</div>';
                     }
                     unset($_SESSION['message'], $_SESSION['message_type']);
                     ?>

@@ -10,12 +10,15 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <p class="nav-link">Hello <?= $_SESSION['user']['name'] ?></p>
+                    <p class="nav-link">Hello <strong><?= $_SESSION['user']['name'] ?></strong></p>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Create a survey</a>
+                    <a class="nav-link" href="create_survey.php">list surveys</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="create_survey.php">Create a survey</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="vendor/logout.php">Exit</a>

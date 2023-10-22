@@ -4,6 +4,7 @@ if (!$_SESSION['user']) {
     header('Location: index.php');
 }
 include 'head.php';
+
 ?>
 
 <body>
@@ -22,6 +23,25 @@ include 'head.php';
             <div class="card-body">
                 email: <?= $_SESSION['user']['email'] ?>
             </div>
+        </div>
+        <div class="card" style="max-width: 300px;">
+            <div class="card-body">
+                <h4>list surveys.</h4>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <?php
+                    if (isset($_SESSION['user']['name_surveys']) && is_array($_SESSION['user']['name_surveys'])) {
+                        foreach ($_SESSION['user']['name_surveys'] as $id => $name) {
+                            echo  "<li>
+                                       <a class='nav-link' href='vendor/survey_page.php?id={$id}' >$name</a> 
+                                  </li>";
+                        }
+                    }
+                    ?>
+                </ul>
+            </div>
+
         </div>
     </div>
 </div>
