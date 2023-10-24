@@ -20,7 +20,29 @@
     margin-bottom: 15px;
 }
 
-/*.checkbox_status {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*}*/
+
+/* Bad request page */
+.body {
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.error-container-br {
+    text-align: center;
+    color: #fff;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.error-message-br h1 {
+    font-size: 36px;
+}
+
+.error-message-br p {
+    font-size: 18px;
+}

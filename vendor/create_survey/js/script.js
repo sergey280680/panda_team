@@ -14,7 +14,7 @@ function isNameSurveyUsed(nameSurvey) {
     const nameSurveyMessage = document.getElementById('nameSurveyMessage');
 
     if (isValueFound) {
-        nameSurveyMessage.textContent = 'Название "' + nameSurveyValue + '" уже существует';
+        nameSurveyMessage.textContent = 'Назва "' + nameSurveyValue + '" вже існує';
         nameSurveyMessage.style.color = 'red';
         nameSurvey.focus();
     }else {
@@ -85,4 +85,25 @@ function updateQuestionNumbers() {
             input.setAttribute('name', name);
         });
     });
+}
+
+function validateForm() {
+    const questionDivs = document.querySelectorAll('.question');
+
+    if (questionDivs.length === 0) {
+        alert('Додайте хоча б одне запитання та варіант відповіді.');
+        return false; // Остановка отправки формы
+    }
+
+    for (let i = 0; i < questionDivs.length; i++) {
+        const answersDiv = questionDivs[i].querySelector(`#answers_${i + 1}`);
+        const answerInputs = answersDiv.querySelectorAll('input[type="text"]');
+
+        if (answerInputs.length === 0) {
+            alert('Додайте хоча б один варіант відповіді до кожного питання.');
+            return false; // Зупинка відправлення форми
+        }
+    }
+
+    return true; // Дозвіл відправлення форми
 }
