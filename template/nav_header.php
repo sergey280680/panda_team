@@ -12,16 +12,16 @@ session_start();
                 <li class="nav-item">
                     <p class="nav-link">Hello <strong><?= $_SESSION['user']['name'] ?></strong></p>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Головна</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="create_survey.php">list surveys</a>
+                    <a class="nav-link" href="../create_survey.php">Створити опитування</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="create_survey.php">Create a survey</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="vendor/logout.php">Exit</a>
+                    <a class="nav-link" href="../vendor/logout.php">Exit</a>
                 </li>
             </ul>
         </div>

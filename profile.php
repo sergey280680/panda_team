@@ -3,49 +3,50 @@ session_start();
 if (!$_SESSION['user']) {
     header('Location: index.php');
 }
-include 'head.php';
-
+include 'template/head.php';
 ?>
 
 <body>
-<?php include 'nav_header.php'; ?>
+<?php include 'template/nav_header.php'; ?>
 
-<!-- Login form. -->
 <div class="container">
-    <div class="col-12 col-md-8 offset-md-4 d-flex align-items-center" style="height: 100vh;">
-        <div class="card" style="max-width: 300px;">
+    <div class="col-12 col-md-6 offset-md-3 d-flex align-items-center" style="height: 100vh;">
+        <div class="card" style="width: 350px; height: 300px;">
             <div class="card-body">
-                id: <?= $_SESSION['user']['id'] ?>
+                <h4>Деталі опитування.</h4>
             </div>
-            <div class="card-body">
-                name: <?= $_SESSION['user']['name'] ?>
-            </div>
-            <div class="card-body">
-                email: <?= $_SESSION['user']['email'] ?>
+            <div class="card-body" style="overflow: auto;">
+                <form action="vendor/profile/update_survey_status.php" method="post" id="status-update-form">
+                    <label for="sort-criteria" class="form-label">Сортувати</label>
+                    <select name="sort_criteria" id="sort-criteria">
+                        <?= $sort_criteria = $_SESSION['user']['sort_criteria']?>
+                        <option value="created_at" <?= ($sort_criteria === 'created_at') ? 'selected' : '' ?>>Дата створення</option>
+                        <option value="name_survey" <?= ($sort_criteria === 'name_survey') ? 'selected' : '' ?>>Назва опитування</option>
+                        <option value="status" <?= ($sort_criteria === 'status') ? 'selected' : '' ?>>Статус</option>
+                    </select>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <?php include 'vendor/profile/my_surveys_list.php'; ?>
+                    </ul>
+                    <button type="button" onclick="submitForm()">Застосувати зміни</button>
+                </form>
             </div>
         </div>
-        <div class="card" style="max-width: 300px;">
+
+        <div class="card" style="width: 350px; height: 300px;">
             <div class="card-body">
-                <h4>list surveys.</h4>
+                <h4>Пройти опитування.</h4>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="overflow: auto;">
                 <ul>
-                    <?php
-                    if (isset($_SESSION['user']['name_surveys']) && is_array($_SESSION['user']['name_surveys'])) {
-                        foreach ($_SESSION['user']['name_surveys'] as $id => $name) {
-                            echo  "<li>
-                                       <a class='nav-link' href='vendor/survey_page.php?id={$id}' >$name</a> 
-                                  </li>";
-                        }
-                    }
-                    ?>
+                    <?php include 'vendor/profile/all_published_surveys_list.php'; ?>
                 </ul>
             </div>
-
         </div>
+
     </div>
 </div>
 
+<script src="vendor/profile/js/checkbox_processing.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

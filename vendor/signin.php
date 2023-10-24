@@ -13,7 +13,7 @@ require_once 'connect.php';
         $user = mysqli_fetch_assoc($check_user);
 
         // Выполнение SQL-запроса
-        $result = mysqli_query($connect, "SELECT * FROM surveys");
+        $result = mysqli_query($connect, "SELECT * FROM surveys WHERE status = 1");
 
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
