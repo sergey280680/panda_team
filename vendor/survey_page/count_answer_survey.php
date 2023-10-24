@@ -1,13 +1,12 @@
 <?php
 session_start();
 require_once '../connect.php';
-//print_r(1111111);die();
 
 global $connect;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$connect) {
-        die("Помилка підключення до бази даних: " . mysqli_connect_error());
+        die("Помилка підключення до бази даних.");
     }
 
     $answers = $_POST['answers'];
@@ -24,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     header('Location: ../../profile.php');
 } else {
-    echo "Неправильний запит.";
+    header('Location: ../../bad_request.php');
 }
 
 ?>

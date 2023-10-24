@@ -17,6 +17,8 @@ if (mysqli_num_rows($questionsSurvey) > 0) {
         echo implode($radioButtons);
     }
 } else {
-    echo "Опитування не знайдено.";
+    echo '<div class="alert alert-danger" role="alert">
+         Опитування не знайдено.
+        </div>';
 }
 ?>

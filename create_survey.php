@@ -16,7 +16,7 @@ include 'template/head.php';
             </div>
             <div class="card-body">
                 <span id="nameSurveyMessage"></span>
-                <form action="vendor/create_survey/save_response.php" method="post" id="survey-form">
+                <form action="vendor/create_survey/save_response.php" method="post" id="survey-form" onsubmit="return validateForm()">
                     <input type="text" name="name_survey" placeholder="Назва опитування" required onblur="isNameSurveyUsed(this)">
                     <button type="button" onclick="addQuestion()">Додати питання</button>
 

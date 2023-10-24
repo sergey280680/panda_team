@@ -8,7 +8,7 @@ require_once 'vendor/connect.php';
 global $connect;
 
 if (!$connect) {
-    die("Помилка підключення до бази даних: " . mysqli_connect_error());
+    die('Помилка підключення до бази даних.');
 }
 
 // Get survey ID from URL
@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
     $surveyName = $row['name_survey'];
     include 'template/head.php';
 } else {
-    print_r("Неправильный запрос.") ;
+    header('Location: bad_request.php');
 }
 
 mysqli_close($connect);
