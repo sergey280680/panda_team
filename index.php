@@ -3,7 +3,8 @@
     if ($_SESSION['user']) {
         header('Location: profile.php');
     }
-include 'head.php';
+include 'template/head.php';
+
 ?>
 
 <body>
@@ -25,15 +26,8 @@ include 'head.php';
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Sign in</button>
                     </div>
-                    <?php
-                    if ($_SESSION['message']) {
-                        $class = ($_SESSION['message_type'] == 'error') ? 'msg error' : 'msg success';
-                        echo '<div class="' . $class . '">' . $_SESSION['message'] . '</div>';
-                    }else {
-                        echo '<div class="form-group">' . '<p>No account <a href="/register.php">Sign up!</a></p>' . '</div>';
-                    }
-                    unset($_SESSION['message'], $_SESSION['message_type']);
-                    ?>
+                    <div class="form-group"><p>No account <a href="/register.php">Sign up!</a></p></div>
+                    <?php include 'vendor/index/index.php'; ?>
                 </form>
             </div>
         </div>

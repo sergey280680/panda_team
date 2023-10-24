@@ -3,7 +3,7 @@
 if ($_SESSION['user']) {
     header('Location: profile.php');
 }
-include 'head.php';
+include 'template/head.php';
 ?>
 
 <body>
