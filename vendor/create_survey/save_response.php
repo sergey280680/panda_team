@@ -17,9 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $surveyStatus = isset($_POST['survey_status']) ? 1 : 0;
 
     // Inserting data into the `surveys' table
-    $insertSurveyQuery = "INSERT INTO surveys (user_id, name_survey) VALUES ($user_id, '$name_survey')";
+    $insertSurveyQuery = "INSERT INTO surveys (user_id, name_survey, status) VALUES ($user_id, '$name_survey', $surveyStatus)";
     if (mysqli_query($connect, $insertSurveyQuery)) {
         $survey_id = mysqli_insert_id($connect); // Отримуємо ID нового опитування
+        $_SESSION['user']['has_surveys'] = 1;
     } else {
         echo "Помилка при вставці даних в таблицю `surveys`: " . mysqli_error($connect);
     }

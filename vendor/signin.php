@@ -11,10 +11,12 @@ require_once 'connect.php';
 
     if (mysqli_num_rows($check_user) > 0){
         $user = mysqli_fetch_assoc($check_user);
+        $current_user = $user['id'];
 
-        // Выполнение SQL-запроса
+        $has_id = mysqli_query($connect, "SELECT * FROM surveys WHERE user_id = '$current_user'");
+        $has_survey = mysqli_num_rows($has_id) > 0 ? 1 :0 ;
+
         $result = mysqli_query($connect, "SELECT * FROM surveys WHERE status = 1");
-
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $name_surveys[$row['id']] = $row["name_survey"];
@@ -25,8 +27,12 @@ require_once 'connect.php';
             'id' => $user['id'],
             'name' => $user['name'],
             'email' => $user['email'],
-            'name_surveys' => $name_surveys,
+            'has_surveys' => $has_survey,
         ];
+        if (!empty($name_surveys)) {
+            $_SESSION['user']['name_surveys'] = $name_surveys;
+        }
+
         header('Location: ../profile.php');
     }else{
         $_SESSION['message'] = 'Invalid email or password.';
