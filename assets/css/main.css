@@ -20,6 +20,15 @@
     margin-bottom: 15px;
 }
 
+/* API container */
+#json-container {
+    font-family: monospace;
+    white-space: pre;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: rgba(148, 225, 160, 0.66);
+}
+
 
 /* Bad request page */
 .body {
