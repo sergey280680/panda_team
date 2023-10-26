@@ -25,7 +25,8 @@ include 'template/head.php';
                         <input type="checkbox" name="survey_status" id="survey_status" value="1">
                         <label for="survey_status">Опублікувати</label>
                     </div>
-                    <div id="nameSurveys" data-namesurveys="<?= json_encode($_SESSION['user']['name_surveys']) ?>"></div>
+
+                    <div id="nameSurveys" data-namesurveys='<?= json_encode($_SESSION['user']['name_surveys']) ?>'"></div>
                 </form>
             </div>
         </div>

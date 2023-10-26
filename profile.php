@@ -13,22 +13,28 @@ include 'template/head.php';
     <div class="col-12 col-md-6 offset-md-3 d-flex align-items-center" style="height: 100vh;">
         <div class="card" style="width: 350px; height: 300px;">
             <div class="card-body">
-                <h4>Деталі опитування.</h4>
+                <h4>Мої опитування.</h4>
             </div>
+
             <div class="card-body" style="overflow: auto;">
-                <form action="vendor/profile/update_survey_status.php" method="post" id="status-update-form">
-                    <label for="sort-criteria" class="form-label">Сортувати</label>
-                    <select name="sort_criteria" id="sort-criteria">
-                        <?= $sort_criteria = $_SESSION['user']['sort_criteria']?>
-                        <option value="created_at" <?= ($sort_criteria === 'created_at') ? 'selected' : '' ?>>Дата створення</option>
-                        <option value="name_survey" <?= ($sort_criteria === 'name_survey') ? 'selected' : '' ?>>Назва опитування</option>
-                        <option value="status" <?= ($sort_criteria === 'status') ? 'selected' : '' ?>>Статус</option>
-                    </select>
-                    <ul style="list-style-type: none; padding: 0;">
-                        <?php include 'vendor/profile/my_surveys_list.php'; ?>
-                    </ul>
-                    <button type="button" onclick="submitForm()">Застосувати зміни</button>
-                </form>
+                <?php if ($_SESSION['user']['has_surveys'] > 0): ?>
+                    <form action="vendor/profile/update_survey_status.php" method="post" id="status-update-form">
+                        <label for="sort-criteria" class="form-label">Сортувати</label>
+                        <select name="sort_criteria" id="sort-criteria">
+                            <?= $sort_criteria = $_SESSION['user']['sort_criteria']?>
+                            <option value="created_at" <?= ($sort_criteria === 'created_at') ? 'selected' : '' ?>>Дата створення</option>
+                            <option value="name_survey" <?= ($sort_criteria === 'name_survey') ? 'selected' : '' ?>>Назва опитування</option>
+                            <option value="status" <?= ($sort_criteria === 'status') ? 'selected' : '' ?>>Статус</option>
+                        </select>
+                        <ul style="list-style-type: none; padding: 0;">
+                            <?php include 'vendor/profile/my_surveys_list.php'; ?>
+                        </ul>
+                        <button type="button" onclick="submitForm()">Застосувати зміни</button>
+                    </form>
+                <?php else: ?>
+                    <h4>Ви покищо не створили жодного опитування.</h4>
+                <?php endif; ?>
+
             </div>
         </div>
 
